@@ -3,10 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/FloatMenu/FloatMenu.iml" filepath="$PROJECT_DIR$/FloatMenu/FloatMenu.iml" />
-      <module fileurl="file://$PROJECT_DIR$/GameLibrary/GameLibrary.iml" filepath="$PROJECT_DIR$/GameLibrary/GameLibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/GameSDK.iml" filepath="$PROJECT_DIR$/.idea/GameSDK.iml" />
       <module fileurl="file://$PROJECT_DIR$/GameSDK.iml" filepath="$PROJECT_DIR$/GameSDK.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/compilelib/compilelib.iml" filepath="$PROJECT_DIR$/compilelib/compilelib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/game-overseas-sdk/game-overseas-sdk.iml" filepath="$PROJECT_DIR$/game-overseas-sdk/game-overseas-sdk.iml" />
     </modules>
   </component>
 </project>

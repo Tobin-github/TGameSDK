@@ -1,7 +1,7 @@
 package com.gamater.sample;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.game.tobin.common.GameEncrypt;
 import com.game.tobin.sdk.GameSDK;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -9,9 +9,8 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/FloatMenu" />
-            <option value="$PROJECT_DIR$/GameLibrary" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/compilelib" />
+            <option value="$PROJECT_DIR$/game-overseas-sdk" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
