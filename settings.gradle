@@ -1,1 +1,1 @@
-include ':app', ':game-overseas-sdk', ':FloatMenu'
+include ':app', ':game-overseas-sdk', ':floating-button'
