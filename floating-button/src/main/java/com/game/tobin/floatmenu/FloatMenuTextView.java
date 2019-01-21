@@ -10,9 +10,9 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
-import android.support.v7.widget.AppCompatTextView;
+import android.widget.TextView;
 
-public class FloatMenuTextView extends AppCompatTextView {
+public class FloatMenuTextView extends TextView {
 	public FloatMenuTextView(Context context, AttributeSet attrs, int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
 	}

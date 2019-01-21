@@ -17,8 +17,6 @@ import android.view.animation.Animation.AnimationListener;
 import android.view.animation.ScaleAnimation;
 import android.widget.FrameLayout;
 
-import com.game.tobin.R;
-
 public class FloatMenu extends FrameLayout {
 	private Activity mActivity;
 	private FloatMenuClipBgView mainView;
@@ -49,21 +47,21 @@ public class FloatMenu extends FrameLayout {
 	}
 
 	private void init(Context context) {
-		LayoutInflater.from(context).inflate(R.layout.tobin_float_menu, this);
-		mainView = (FloatMenuClipBgView) findViewById(R.id.menu_main_view);
+		LayoutInflater.from(context).inflate(getLayout("tobin_float_menu"), this);
+		mainView = (FloatMenuClipBgView) findViewById(getId("menu_main_view"));
 		try {
-			mainView.setBackgroundResource(R.drawable.tobin_float_menu_bg);
+			mainView.setBackgroundResource(getDrawable("tobin_float_menu_bg"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		menuScroll = (FloatMenuHScrollView) findViewById(R.id.menu_scroll);
-		accountView = (FloatMenuTextView) findViewById(R.id.tvAccount);
+		menuScroll = (FloatMenuHScrollView) findViewById(getId("menu_scroll"));
+		accountView = (FloatMenuTextView) findViewById(getId("tvAccount"));
 		accountView.setVisibility(View.VISIBLE);
-		homePageView = (FloatMenuTextView) findViewById(R.id.tvHomePage);
+		homePageView = (FloatMenuTextView) findViewById(getId("tvHomePage"));
 		homePageView.setVisibility(View.VISIBLE);
-		fbView = (FloatMenuTextView) findViewById(R.id.tvFB);
+		fbView = (FloatMenuTextView) findViewById(getId("tvFB"));
 		fbView.setVisibility(View.VISIBLE);
-		serviceView = (FloatMenuTextView) findViewById(R.id.tvService);
+		serviceView = (FloatMenuTextView) findViewById(getId("tvService"));
 		serviceView.setVisibility(View.VISIBLE);
 	}
 
@@ -117,10 +115,10 @@ public class FloatMenu extends FrameLayout {
 	}
 
 	public void setItemVisible(int visible) {
-		findViewById(R.id.tvAccount).setVisibility(visible);
-		findViewById(R.id.tvHomePage).setVisibility(visible);
-		findViewById(R.id.tvService).setVisibility(visible);
-		findViewById(R.id.tvFB).setVisibility(visible);
+		findViewById(getId("tvAccount")).setVisibility(visible);
+		findViewById(getId("tvHomePage")).setVisibility(visible);
+		findViewById(getId("tvService")).setVisibility(visible);
+		findViewById(getId("tvFB")).setVisibility(visible);
 		updateMenuIcon(visible);
 	}
 
@@ -129,16 +127,6 @@ public class FloatMenu extends FrameLayout {
 	}
 
 	public void updateMenuIcon(int visible) {
-//		MobUserManager mobUserManager = MobUserManager.getInstance();
-//		MobUser user = mobUserManager.getCurrentUser();
-//
-//		View view = findViewById(R.id.tvAccount);
-//		if (user != null) {
-//			if (visible != 99)
-//				view.setVisibility(visible);
-//		} else {
-//			view.setVisibility(View.GONE);
-//		}
 		measure(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED);
 		// 刷新View
 		invalidate();
@@ -192,6 +180,27 @@ public class FloatMenu extends FrameLayout {
 			}
 		});
 		startAnimation(a1);
+	}
+
+	private int getLayout(String name) {
+		if (mActivity != null)
+			return mActivity.getResources().getIdentifier(name, "layout", mActivity.getPackageName());
+		else
+			return 0;
+	}
+
+    private int getId(String name) {
+		if (mActivity != null)
+			return mActivity.getResources().getIdentifier(name, "id", mActivity.getPackageName());
+		else
+			return 0;
+	}
+
+	private int getDrawable(String name) {
+		if (mActivity != null)
+			return mActivity.getResources().getIdentifier(name, "drawable", mActivity.getPackageName());
+		else
+			return 0;
 	}
 
 }

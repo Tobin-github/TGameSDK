@@ -27,27 +27,23 @@
 		        android:maxLines="1"
 		        android:drawableTop="@drawable/tobin_float_account_icon"
 		        android:text="@string/tobin_string_account" />
+
 		    <com.game.tobin.floatmenu.FloatMenuTextView
 		        android:id="@+id/tvHomePage"
 		        style="@style/PlayFloatMenuTitle"
 		        android:layout_marginLeft="3dp"
 		        android:maxLines="1"
-		        android:drawableTop="@drawable/tobin_float_website_icon"
-		        android:text="@string/tobin_string_home" />
+		        android:drawableTop="@drawable/tobin_float_fb_icon"
+		        android:text="@string/tobin_string_facebook" />
+
 		    <com.game.tobin.floatmenu.FloatMenuTextView
 		        android:id="@+id/tvFB"
 		        style="@style/PlayFloatMenuTitle"
 		        android:layout_marginLeft="3dp"
 		        android:maxLines="1"
-		        android:drawableTop="@drawable/tobin_float_fb_icon"
-		        android:text="@string/tobin_string_facebook" />
-		    <com.game.tobin.floatmenu.FloatMenuTextView
-		        android:id="@+id/tvService"
-		        style="@style/PlayFloatMenuTitle"
-		        android:layout_marginLeft="3dp"
-		        android:maxLines="1"
 		        android:drawableTop="@drawable/tobin_float_custom_service_icon"
 		        android:text="@string/tobin_string_custom_service" />
+
 		</LinearLayout>
 	</com.game.tobin.floatmenu.FloatMenuHScrollView>
 </com.game.tobin.floatmenu.FloatMenuClipBgView>

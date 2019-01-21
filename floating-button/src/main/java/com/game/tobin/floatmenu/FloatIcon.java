@@ -14,12 +14,9 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.RotateAnimation;
 import android.view.animation.TranslateAnimation;
-import android.widget.AbsoluteLayout;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.game.tobin.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -71,7 +68,7 @@ public class FloatIcon extends FrameLayout {
 		mParams.y = lastPoint.y;
 		checkParams();
 		mMenuManager.setViewPosition(this, mParams.x, mParams.y);
-		FloatMenuOriginSPUtil.setFloatMenuOrigin(getContext(), mParams.x, mParams.y);
+		FloatUtils.setFloatMenuOrigin(getContext(), mParams.x, mParams.y);
 	}
 
 	private ImageView mIconImage;
@@ -86,22 +83,23 @@ public class FloatIcon extends FrameLayout {
 		}
 		mViewWidth = menuHeight;
 		mIconImage = new ImageView(activity);
-		int p = DensityUtil.dip2px(activity, 2);
+		int p = FloatUtils.dip2px(activity, 2);
 
 		// 悬浮按钮设置图片
-		mIconImage.setImageResource(R.drawable.tobin_float_icon);
+//		mIconImage.setImageResource(R.drawable.q1_float_icon);
+		mIconImage.setImageResource(get(activity,"q1_float_icon","drawable"));
 
 		mIconImage.setPadding(p, p, p, p);
 		addView(mIconImage, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 		mNoteNum = new TextView(activity);
-		mNoteNum.setBackgroundResource(R.drawable.tobin_float_num_bg);
+//		mNoteNum.setBackgroundResource(R.drawable.tobin_float_num_bg);
 		mNoteNum.setTextColor(Color.WHITE);
 		mNoteNum.setGravity(Gravity.CENTER);
 		mNoteNum.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 10);
-		mNoteNum.setPadding(0, 0, DensityUtil.dip2px(activity, 3), DensityUtil.dip2px(activity, 4));
-		int numSize = DensityUtil.dip2px(activity, 20);
+		mNoteNum.setPadding(0, 0, FloatUtils.dip2px(activity, 3), FloatUtils.dip2px(activity, 4));
+		int numSize = FloatUtils.dip2px(activity, 20);
 		LayoutParams params = new LayoutParams(numSize, numSize);
-		params.rightMargin = -DensityUtil.dip2px(activity, 3);
+		params.rightMargin = -FloatUtils.dip2px(activity, 3);
 		params.gravity = Gravity.TOP | Gravity.RIGHT;
 		addView(mNoteNum, params);
 		setNoteNumVisible(false);
@@ -113,6 +111,10 @@ public class FloatIcon extends FrameLayout {
 
 	public void setRedPoint(boolean i) {
 		isRedPoint = i;
+	}
+
+	private int get(Activity activity,String name, String type) {
+		return activity.getResources().getIdentifier(name, type, activity.getPackageName());
 	}
 
 	public void setNoteNum(int num) {
@@ -156,7 +158,7 @@ public class FloatIcon extends FrameLayout {
 		if (getScreenHeight() > 0 && mParams.y > getScreenHeight() - mViewWidth) {
 			mParams.y = getScreenHeight() - mViewWidth;
 		}
-		int i = DensityUtil.dip2px(getContext(), 24);
+		int i = FloatUtils.dip2px(getContext(), 24);
 		if (mParams.x < i) {
 			mParams.x = 0;
 			isAlignBorder = true;
@@ -233,7 +235,7 @@ public class FloatIcon extends FrameLayout {
 				}
 				return true;
 			} else {
-				FloatMenuOriginSPUtil.setFloatMenuOrigin(getContext(), mParams.x, mParams.y);
+				FloatUtils.setFloatMenuOrigin(getContext(), mParams.x, mParams.y);
 				mParams.y = getTop();
 				mMenuManager.setViewPosition(this, mParams.x, mParams.y);
 				mMenuManager.updateIconView();
@@ -264,7 +266,7 @@ public class FloatIcon extends FrameLayout {
 		}else if(Build.VERSION.SDK_INT < 16 && Build.VERSION.SDK_INT >= 14){
             mIconImage.setAlpha((float)alpha);
 		}
-		mNoteNum.getBackground().setAlpha(alpha);
+//		mNoteNum.getBackground().setAlpha(alpha);
 		mNoteNum.setTextColor(Color.argb(alpha, 255, 255, 255));
 	}
 

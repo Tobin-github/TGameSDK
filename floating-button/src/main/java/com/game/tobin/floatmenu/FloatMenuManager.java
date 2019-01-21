@@ -8,7 +8,8 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager.LayoutParams;
-import android.widget.AbsoluteLayout;
+import android.widget.RelativeLayout;
+
 
 public class FloatMenuManager {
     private static final String MENU_TAG = "FloatMenu";
@@ -18,6 +19,7 @@ public class FloatMenuManager {
     private int mScreenHeight;
 
     private FloatIcon mFloatIcon;
+
     private AbsoluteLayout.LayoutParams mIconParams;
 
     private DeleteView mDeleteView;
@@ -27,9 +29,9 @@ public class FloatMenuManager {
     private FloatMenu mFloatMenu;
     private AbsoluteLayout.LayoutParams mMenuParams;
     private int mMenuHeight;
-    private AbsoluteLayout mContainer;
+    private RelativeLayout mContainer;
 
-    private boolean isFloatHideEnable = true;
+    private boolean isFloatHideEnable = false;
 
     private FloatMenuManager(Activity activity) {
         this.mActivity = activity;
@@ -37,7 +39,7 @@ public class FloatMenuManager {
         mScreenWidth = dm.widthPixels;
         mScreenHeight = dm.heightPixels;
 
-        mContainer = new AbsoluteLayout(mActivity);
+        mContainer = new RelativeLayout(mActivity);
         mContainer.setTag(MENU_TAG);
         mContainer.setBackgroundColor(Color.argb(0, 0, 0, 0)); // 透明
     }
@@ -93,10 +95,10 @@ public class FloatMenuManager {
         if (mFloatIcon != null)
             return;
         mFloatIcon = new FloatIcon(mActivity, mMenuHeight);
-        int[] originCache = FloatMenuOriginSPUtil.getFloatMenuOrigin(mActivity);
+        int[] originCache = FloatUtils.getFloatMenuOrigin(mActivity);
         int x, y;
         if (originCache == null) {
-            int[] origin = {0, 30};
+            int[] origin = {0, 30}; // 初始位置
             if (origin != null) {
                 if (origin[0] != 0 && origin[0] != 100)
                     origin[0] = 0;
@@ -181,11 +183,11 @@ public class FloatMenuManager {
         if (mDeleteView != null)
             return;
         mDeleteView = new DeleteView(mActivity);
-        int width = DensityUtil.dip2px(mActivity, 39);
-        int height = DensityUtil.dip2px(mActivity, 39);
+        int width = FloatUtils.dip2px(mActivity, 39);
+        int height = FloatUtils.dip2px(mActivity, 39);
         if (mDeleteParams == null) {
             mDeleteParams = new AbsoluteLayout.LayoutParams(width, height, (mScreenWidth - width) / 2,
-                    getHeight() - height - (DensityUtil.dip2px(mActivity, 35)));
+                    getHeight() - height - (FloatUtils.dip2px(mActivity, 35)));
         }
         mContainer.addView(mDeleteView, mDeleteParams);
         mDeleteView.setVisibility(View.INVISIBLE);
@@ -195,10 +197,10 @@ public class FloatMenuManager {
                 new int[]{0x66000000, 0xBB000000, 0xF0000000});
         deleteBgView.setBackgroundDrawable(bgDrawable);
         AbsoluteLayout.LayoutParams deleteBgParams = new AbsoluteLayout.LayoutParams(mScreenWidth,
-                DensityUtil.dip2px(mActivity, 35), 0, getHeight() - DensityUtil.dip2px(mActivity, 35));
+                FloatUtils.dip2px(mActivity, 35), 0, getHeight() - FloatUtils.dip2px(mActivity, 35));
 
         mContainer.addView(deleteBgView, deleteBgParams);
-        deleteBgView.setVisibility(View.VISIBLE);
+        deleteBgView.setVisibility(View.GONE);
     }
 
     private void removeDeleteView() {
